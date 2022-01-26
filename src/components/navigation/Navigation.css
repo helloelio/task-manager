@@ -1,0 +1,48 @@
+.navigation {
+  background-color: #1d1d1d;
+  padding: 25px 10px 25px 20px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+.btn {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  width: 100%;
+  border: 1px solid white;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-top: auto;
+}
+.pockets-list {
+  max-height: 75vh;
+  overflow: auto;
+  padding-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 0.5rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(121, 10, 10);
+  border-radius: 0.5rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  border-radius: 0.5rem;
+}

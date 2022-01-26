@@ -1,0 +1,26 @@
+h3 {
+  margin: 0;
+}
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile__image {
+  font-size: 1.5rem;
+  background-color: #eee345;
+  padding: 15px 1.5rem;
+  border-radius: 50%;
+}
+.avatar {
+  text-shadow: 0px 0px 10px black;
+}
+.profile__description {
+  margin-left: 10px;
+}
