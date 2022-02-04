@@ -6,7 +6,12 @@ function PocketsList(props) {
     <div>
       {props.pockets.map((pocket) => {
         return (
-          <PocketsItem key={pocket.id} name={pocket.name} path={pocket.path} />
+          <PocketsItem
+            key={pocket.id}
+            name={pocket.name}
+            path={pocket.path}
+            handlerSetPocketName={props.handlerSetPocketName}
+          />
         );
       })}
     </div>
