@@ -1,17 +1,18 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Important from './Important';
 import './Main.css';
+import TaskItem from './tasks/taskItem.js';
 
-function Main() {
+function Main(props) {
   return (
     <main className='main'>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Important />} />
-          <Route path='/important' element={<Important />} />
-          <Route path='/all' element={<Important />} />
-        </Routes>
-      </BrowserRouter>
+      <h2>{props.title}</h2>
+      <ul>
+        {props.tasks.map((task) => {
+          return <TaskItem id={task.id} task={task.task} key={task.id} />;
+        })}
+      </ul>
+      <button className='btn btn-main' onClick={() => props.modalOpen('TASK')}>
+        +
+      </button>
     </main>
   );
 }

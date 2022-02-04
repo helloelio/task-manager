@@ -9,7 +9,7 @@ function Profile() {
         <span className='avatar'>{name[0].toUpperCase()}</span>
       </div>
       <div className='profile__description'>
-        <h3>{name}</h3>
+        <h3 className='profile__name'>{name}</h3>
         <p>example@mail.com</p>
       </div>
     </div>
