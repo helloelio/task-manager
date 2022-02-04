@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navigation from './components/navigation/Navigation';
 import Main from './components/main/Main';
 import Modal from './components/modal/Modal';
-import { useState, useEffect } from 'react';
+import NotFound from './components/404/NotFound';
+import { useState } from 'react';
 
 function App() {
   const [routes, setRouter] = useState([
@@ -46,6 +47,7 @@ function App() {
   ]);
 
   const [modalType, setModalType] = useState('');
+  const [pocketName, setPocketName] = useState('');
   const [modalState, setModalStatus] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
 
@@ -64,6 +66,17 @@ function App() {
     setRouter((prevState) => [...prevState, newPocket]);
   };
 
+  const handlerSetPocketName = (newPocketName) => {
+    setPocketName(newPocketName);
+  };
+
+  const handlerScrollToTop = () => {
+    document.getElementById('main').scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const handlerNewItem = (item) => {
     if (item !== '' && item !== ' ') {
       switch (modalType) {
@@ -77,7 +90,14 @@ function App() {
           handlerModalStatus(false);
           break;
         case 'TASK': {
-          console.log(item);
+          routes.find((route) => {
+            if (route.name === pocketName) {
+              route.tasks.push({
+                id: Math.floor(Math.random() * 100),
+                task: item,
+              });
+            }
+          });
           handlerModalStatus(false);
           break;
         }
@@ -89,12 +109,13 @@ function App() {
     }
   };
   return (
-    <div className='App'>
+    <div className='App' id='app'>
       <BrowserRouter>
         <Navigation
           handleSetRouter={handleSetRouter}
           modalOpen={modalOpen}
           pockets={routes}
+          handlerSetPocketName={handlerSetPocketName}
         />
         <Routes>
           {routes.map((route) => {
@@ -107,11 +128,14 @@ function App() {
                     tasks={route.tasks}
                     title={route.name}
                     modalOpen={modalOpen}
+                    scrollToTop={handlerScrollToTop}
                   />
                 }
               />
             );
           })}
+          <Route path='/tasks/*' element={<NotFound title='Pocket' />} />
+          <Route path='*' element={<NotFound title='Page' />} />
         </Routes>
       </BrowserRouter>
       {modalState && modalType === 'POCKET' ? (
