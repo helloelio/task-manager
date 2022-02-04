@@ -1,9 +1,40 @@
 .main {
+  position: relative;
   background-color: #252525;
   padding: 25px 10px 25px 20px;
+  overflow: auto;
 }
 
 .pocket-title {
   font-size: 2rem;
   font-weight: 600;
+}
+ul {
+  padding: 0;
+  list-style: none;
+}
+input[type='checkbox'] {
+  margin-right: 15px;
+}
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.301);
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1.5rem;
+  width: 90%;
+}
+button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #02495d;
+}
+.btn-main {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  width: 5%;
 }
