@@ -8,7 +8,7 @@
   transform: translate(-50%, -50%);
   height: 200px;
   width: 500px;
-  background-color: #1d1d1db7;
+  background-color: rgba(28, 28, 28, 0.95);
   border: 1px solid white;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px 0 black;
@@ -22,7 +22,8 @@
   border: none;
   border-radius: 0.5rem;
   padding: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.267);
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 5px 0 #000;
 }
 .modal-header {
   display: flex;
@@ -48,18 +49,28 @@
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+  box-shadow: 0 0 5px 0 #000;
+  transition: 0.3s ease-in-out;
 }
 .enter {
-  background-color: rgb(133, 167, 179);
-  color: white;
+  border: 1px solid #00b1e3;
+  background-color: #00b1e3;
+  color: #fff;
+}
+.enter:hover {
+  background-color: #fff;
+  border: 1px solid #fff;
+  color: #00b1e3;
 }
 .close {
-  border: 1px solid white;
-  color: white;
+  border: 1px solid #fff;
+  color: #fff;
 }
-
+.close:hover {
+  background-color: #000;
+}
 .error-message {
-  border: 1px solid red;
+  border: 1px solid #ff0000;
   margin-bottom: 10px;
   padding: 0.5rem;
 }

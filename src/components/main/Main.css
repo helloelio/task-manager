@@ -1,28 +1,36 @@
 .main {
   position: relative;
   background-color: #252525;
-  padding: 25px 10px 25px 20px;
+  padding: 15vh;
   overflow: auto;
 }
-
+.main__title {
+  font-size: 2.5rem;
+  padding-top: 200px;
+}
 .pocket-title {
   font-size: 2rem;
   font-weight: 600;
 }
+
 ul {
   padding: 0;
   list-style: none;
 }
+
 input[type='checkbox'] {
   margin-right: 15px;
 }
+
 li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.301);
-  margin-bottom: 10px;
-  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0.1rem;
+  box-shadow: 0 0 5px 0 black;
+  margin-bottom: 15px;
+  padding: 5px;
   font-size: 1.5rem;
   width: 90%;
 }
@@ -36,5 +44,5 @@ button {
   position: fixed;
   bottom: 20px;
   right: 30px;
-  width: 5%;
+  width: 3%;
 }

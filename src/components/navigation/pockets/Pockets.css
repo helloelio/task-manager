@@ -4,13 +4,12 @@ a {
   text-decoration: none;
 }
 .pockets-item {
-  border: 1px solid rgba(255, 255, 255, 0.253);
-  border-radius: 0.5rem;
   margin-bottom: 5px;
-  padding: 5px;
+  padding: 0.5rem;
   cursor: pointer;
+  font-weight: 300;
 }
 
 .pockets-item:hover {
-  background-color: rgba(255, 255, 255, 0.267);
+  background-color: #ffffff40;
 }

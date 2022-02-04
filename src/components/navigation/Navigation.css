@@ -3,6 +3,7 @@
   padding: 25px 10px 25px 20px;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  width: 210px;
 }
 .btn {
   border-radius: 0.5rem;
@@ -10,17 +11,21 @@
   font-size: 1.2rem;
   font-weight: 500;
   width: 100%;
-  border: 1px solid white;
-  background-color: white;
-  color: black;
+  background-color: #00b1e3;
+  color: #fff;
+  box-shadow: 0 0 5px 0 black;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   margin-top: auto;
+  transition: 0.3s ease-in-out;
+}
+.btn:hover {
+  background-color: #fff;
+  color: #00b1e3;
 }
 .pockets-list {
   max-height: 72vh;
   overflow: auto;
-  padding-right: 10px;
   margin-bottom: 10px;
 }
 
