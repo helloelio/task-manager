@@ -4,15 +4,17 @@ import { useState } from 'react';
 function Modal(props) {
   const [inputValue, setInputValue] = useState('');
 
+  const handlerKeyPress = (key) => {
+    if (key === 'Enter') {
+      props.handlerNewItem(inputValue);
+      console.log(key);
+    } else if (key === 'Escape') {
+      props.handlerStatus(false);
+    }
+  };
+
   return (
-    <div
-      className='modal'
-      onKeyPress={(e) => {
-        if (e.key === 'Enter') {
-          props.handlerNewItem(inputValue);
-        }
-      }}
-    >
+    <div className='modal' onKeyDown={(e) => handlerKeyPress(e.key)}>
       <div className='modal-header'>
         <h3 className='modal-header__tutle'>Enter Your {props.title} name:</h3>
         <input

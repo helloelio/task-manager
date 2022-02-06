@@ -1,17 +1,18 @@
 import './Main.css';
-import TaskItem from './tasks/taskItem.js';
+import TaskItem from './tasks/taskItem';
 import Breadcrumbs from './breadcrumbs/BreadCrumbs';
 import Background from './assets/pocket-bg.jpg';
 
 function Main(props) {
   const bg = {
-    background: `url('${Background}')`,
+    backgroundImage: `url('${Background}')`,
     height: '250px',
     width: '100%',
     position: 'absolute',
     top: '35px',
     left: '0',
     backgroundSize: '100%',
+    backgroundAttachment: 'fixed',
   };
 
   return (
@@ -21,7 +22,14 @@ function Main(props) {
       <h2 className='main__title'>{props.title}</h2>
       <ul>
         {props.tasks.map((task) => {
-          return <TaskItem id={task.id} task={task.task} key={task.id} />;
+          return (
+            <TaskItem
+              id={task.id}
+              task={task.task}
+              key={task.id}
+              handlerDeleteTask={props.handlerDeleteTask}
+            />
+          );
         })}
       </ul>
       <button

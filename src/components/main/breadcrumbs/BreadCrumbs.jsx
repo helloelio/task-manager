@@ -1,8 +1,4 @@
 export default function Breadcrumbs(props) {
-  // const symbols = '@#$%^&*_-=№';
-
-  // const randomSymbol = Math.floor(Math.random() * (symbols.length - 1) + 1);
-
   const style = {
     position: 'fixed',
     top: '0',
@@ -20,7 +16,7 @@ export default function Breadcrumbs(props) {
     cursor: 'pointer',
     textDecoration: 'underline',
   };
-  console.log();
+
   return (
     <div style={style}>
       {/* <span style={styleSymbol}>{symbols[randomSymbol]}</span> */}
