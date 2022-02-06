@@ -2,6 +2,7 @@ import './Navigation.css';
 import Profile from './profile/Profile';
 import Search from './search/Search';
 import PocketsList from './pockets/PocketsList';
+import CreateButton from '../../UI/CreateButton';
 
 function Navigation(props) {
   return (
@@ -17,13 +18,11 @@ function Navigation(props) {
         />
       </section>
       <footer>
-        <button
-          onClick={() => props.modalOpen('POCKET')}
-          className='btn'
-          title='Click to add new Pocket section'
-        >
-          + Add new pocket
-        </button>
+        <CreateButton
+          name='POCKET'
+          text='+ Add new pocket'
+          modalOpen={props.modalOpen}
+        />
       </footer>
     </nav>
   );

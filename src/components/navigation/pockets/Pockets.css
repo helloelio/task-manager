@@ -13,3 +13,7 @@ a {
 .pockets-item:hover {
   background-color: #ffffff40;
 }
+.nav-more-menu {
+  left: 110px !important;
+  z-index: 100;
+}

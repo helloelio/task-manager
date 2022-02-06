@@ -18,7 +18,7 @@ export default function NotFound(props) {
   return (
     <div style={style}>
       <h1>{props.title}</h1>
-      <Link to='/tasks/all' style={linkStyle}>
+      <Link to='/tasks/myday' style={linkStyle}>
         Return back
       </Link>
     </div>

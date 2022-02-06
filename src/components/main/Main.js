@@ -2,23 +2,14 @@ import './Main.css';
 import TaskItem from './tasks/TaskItem';
 import Breadcrumbs from './breadcrumbs/BreadCrumbs';
 import Background from './assets/pocket-bg.jpg';
+import CreateButton from '../../UI/CreateButton.jsx';
+import PocketImage from '../../UI/PocketImage';
 
 function Main(props) {
-  const bg = {
-    backgroundImage: `url('${Background}')`,
-    height: '250px',
-    width: '100%',
-    position: 'absolute',
-    top: '35px',
-    left: '0',
-    backgroundSize: '100%',
-    backgroundAttachment: 'fixed',
-  };
-
   return (
     <main className='main' id='main'>
       <Breadcrumbs breadcrumbs={props.title} scrollToTop={props.scrollToTop} />
-      <div className='pocket-bg' style={bg}></div>
+      <PocketImage image={Background} />
       <h2 className='main__title'>{props.title}</h2>
       <ul>
         {props.tasks.map((task) => {
@@ -32,13 +23,7 @@ function Main(props) {
           );
         })}
       </ul>
-      <button
-        className='btn btn-main'
-        onClick={() => props.modalOpen('TASK')}
-        title='Click to add new task in current pocket'
-      >
-        +
-      </button>
+      <CreateButton name='TASK' text='+' modalOpen={props.modalOpen} />
     </main>
   );
 }

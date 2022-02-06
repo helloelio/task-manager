@@ -1,6 +1,7 @@
 import '../Main.css';
 import { useState } from 'react';
-import DragIcon from './UI/DragIcon';
+import DragIcon from '../../../UI/DragIcon';
+import InteractiveButton from '../../../UI/interactive/InteractiveButton';
 
 const TaskItem = (props) => {
   const [moreMenu, setMoreMenu] = useState(false);
@@ -10,23 +11,12 @@ const TaskItem = (props) => {
     setMoreMenu(!moreMenu);
   };
 
-  const handlerBlurEnd = (e) => {
-    if (!e.currentTarget.contains(e.relatedTarget)) {
-      setMoreMenu(false);
-    }
-  };
-
   const activeTaskItem = {
     backgroundColor: moreMenu ? 'rgba(255, 255, 255, 0.3)' : '',
   };
 
   const hoveredTaskMenu = {
     backgroundColor: interactiveMenu ? 'rgba(255, 255, 255, 0.1)' : '',
-  };
-
-  const activeMoreMenu = {
-    background: moreMenu ? 'white' : '',
-    color: moreMenu ? 'red' : '',
   };
 
   return (
@@ -41,39 +31,21 @@ const TaskItem = (props) => {
       <div className='left-block' style={hoveredTaskMenu}>
         <span className='task-content'>
           <DragIcon active={interactiveMenu} />
-          {props.task}
+          <input
+            className='task-value'
+            type='text'
+            value={props.task}
+            autoFocus={true}
+            disabled={true}
+          />
         </span>
       </div>
-      <button
-        className='btn btn-more'
-        onClick={handlerMoreMenu}
-        style={activeMoreMenu}
-        title='Open task menu'
-      >
-        ···
-      </button>
-      {moreMenu ? (
-        <div className='relative'>
-          <div className='more-menu'>
-            <span
-              className='more-menu__controls'
-              onClick={() => {
-                props.handlerDeleteTask(props.id);
-              }}
-            >
-              delete
-            </span>
-            <span
-              className='more-menu__controls'
-              onClick={() => console.log('edit', props.id)}
-            >
-              edit
-            </span>
-          </div>
-        </div>
-      ) : (
-        ''
-      )}
+      <InteractiveButton
+        handlerMoreMenu={handlerMoreMenu}
+        handlerDeleteTask={props.handlerDeleteTask}
+        moreMenu={moreMenu}
+        id={props.id}
+      />
     </li>
   );
 };

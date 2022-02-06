@@ -10,8 +10,6 @@ export default function Breadcrumbs(props) {
     zIndex: '100',
   };
   const styleBreadcrumbs = {
-    backgroundColor: '#00b1e3',
-    boxShadow: '0 0 5px 0 #000',
     padding: '2.5px',
     cursor: 'pointer',
     textDecoration: 'underline',

@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navigation from './components/navigation/Navigation';
 import Main from './components/main/Main';
 import Modal from './components/modal/Modal';
@@ -54,8 +54,9 @@ function App() {
   const [itemToDelete, setItemTodelete] = useState(99999);
 
   useEffect(() => {
-    setRouter([...items]);
-  }, []);
+    // get data
+    setRouter(items);
+  }, [items]);
 
   useEffect(() => {
     items.map((route) => {
@@ -79,7 +80,7 @@ function App() {
   };
 
   const handleSetRouter = (newPocket) => {
-    setRouter((prevState) => [...prevState, newPocket]);
+    items = [...items, newPocket];
   };
 
   const handlerSetPocketName = (newPocketName) => {
@@ -101,6 +102,7 @@ function App() {
     if (item !== '' && item !== ' ') {
       switch (modalType) {
         case 'POCKET':
+          // POST
           handleSetRouter({
             id: Math.floor(Math.random() * 100),
             path: `/tasks/${item}`,
@@ -110,6 +112,7 @@ function App() {
           handlerModalStatus(false);
           break;
         case 'TASK': {
+          // POST
           routes.find((route) => {
             if (route.name === pocketName) {
               route.tasks.push({
@@ -159,10 +162,7 @@ function App() {
             path='/tasks/*'
             element={<NotFound title='This pocket is NOT FOUND' />}
           />
-          <Route
-            path='*'
-            element={<NotFound title='Go to explore your tasks' />}
-          />
+          <Route path='*' element={<Navigate to='/tasks/myday' />} />
         </Routes>
       </BrowserRouter>
       {modalState && modalType === 'POCKET' ? (

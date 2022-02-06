@@ -8,6 +8,7 @@ function PocketsList(props) {
         return (
           <PocketsItem
             key={pocket.id}
+            id={pocket.id}
             name={pocket.name}
             path={pocket.path}
             handlerSetPocketName={props.handlerSetPocketName}

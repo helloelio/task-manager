@@ -34,12 +34,15 @@ function Modal(props) {
         )}
         <div className='modal-buttons'>
           <button
-            className='enter'
+            className='btn enter'
             onClick={() => props.handlerNewItem(inputValue)}
           >
             Add
           </button>
-          <button className='close' onClick={() => props.handlerStatus(false)}>
+          <button
+            className='btn close'
+            onClick={() => props.handlerStatus(false)}
+          >
             Close
           </button>
         </div>

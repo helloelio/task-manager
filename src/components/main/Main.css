@@ -29,7 +29,12 @@ ul {
 input[type='checkbox'] {
   margin-right: 15px;
 }
-
+.task-value {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+}
 .task-item {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -59,13 +64,14 @@ button {
   border-radius: 0;
   box-shadow: 0 0 0 0;
   background: none;
+  color: #fff;
 }
 .more-menu {
   display: flex;
   flex-direction: column;
   position: absolute;
   top: -10px;
-  right: -125px;
+  left: 25px;
   background-color: #1d1d1d;
   border: 1px solid #fff;
   text-align: left;
@@ -78,7 +84,17 @@ button {
 }
 .more-menu__controls:hover {
   background-color: #ffffff40;
+  animation: drag 0.05s ease-in-out;
 }
 .relative {
   position: relative;
+}
+
+@keyframes drag {
+  0% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(-2px);
+  }
 }
