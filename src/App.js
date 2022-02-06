@@ -6,63 +6,65 @@ import Modal from './components/modal/Modal';
 import NotFound from './components/404/NotFound';
 import { useState, useEffect } from 'react';
 
+let items = [
+  {
+    id: 1,
+    path: 'tasks/myday',
+    name: 'My day',
+    tasks: [
+      { id: 1, task: 'buy milk 1' },
+      { id: 2, task: 'buy milk 2' },
+      { id: 3, task: 'buy milk 3' },
+      { id: 4, task: 'buy milk 4' },
+    ],
+  },
+  {
+    id: 2,
+    path: 'tasks/important',
+    name: 'Important',
+    tasks: [
+      { id: 1, task: 'buy q' },
+      { id: 2, task: 'buy w' },
+      { id: 3, task: 'buy e' },
+      { id: 4, task: 'buy r' },
+    ],
+  },
+  {
+    id: 3,
+    path: 'tasks/planned',
+    name: 'Planned',
+    tasks: [
+      { id: 1, task: 'buy a' },
+      { id: 2, task: 'buy b' },
+      { id: 3, task: 'buy c' },
+      { id: 4, task: 'buy d' },
+    ],
+  },
+  { id: 4, name: 'All', path: 'tasks/all', tasks: [] },
+  { id: 5, name: 'Completed', path: 'tasks/completed', tasks: [] },
+  { id: 6, name: 'Topic', path: 'tasks/topic', tasks: [] },
+];
+
 function App() {
   const [routes, setRouter] = useState([]);
   const [modalType, setModalType] = useState('');
   const [pocketName, setPocketName] = useState('My day');
   const [modalState, setModalStatus] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-  const [itemToDelete, setItemTodelete] = useState(1);
+  const [itemToDelete, setItemTodelete] = useState(99999);
 
   useEffect(() => {
-    setRouter([
-      {
-        id: 1,
-        path: 'tasks/myday',
-        name: 'My day',
-        tasks: [
-          { id: 1, task: 'buy milk 1' },
-          { id: 2, task: 'buy milk 2' },
-          { id: 3, task: 'buy milk 3' },
-          { id: 4, task: 'buy milk 4' },
-        ],
-      },
-      {
-        id: 2,
-        path: 'tasks/important',
-        name: 'Important',
-        tasks: [
-          { id: 1, task: 'buy q' },
-          { id: 2, task: 'buy w' },
-          { id: 3, task: 'buy e' },
-          { id: 4, task: 'buy r' },
-        ],
-      },
-      {
-        id: 3,
-        path: 'tasks/planned',
-        name: 'Planned',
-        tasks: [
-          { id: 1, task: 'buy a' },
-          { id: 2, task: 'buy b' },
-          { id: 3, task: 'buy c' },
-          { id: 4, task: 'buy d' },
-        ],
-      },
-      { id: 4, name: 'All', path: 'tasks/all', tasks: [] },
-      { id: 5, name: 'Completed', path: 'tasks/completed', tasks: [] },
-      { id: 6, name: 'Topic', path: 'tasks/topic', tasks: [] },
-    ]);
+    setRouter([...items]);
   }, []);
 
   useEffect(() => {
-    routes.map((route) => {
+    items.map((route) => {
       if (route.name === pocketName) {
         const tasks = route.tasks.filter((t) => t.id !== itemToDelete);
         route.tasks = tasks;
-        setRouter(routes);
       }
     });
+    setRouter([...items]);
   }, [itemToDelete]);
 
   const modalOpen = (type) => {
