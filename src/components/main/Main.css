@@ -15,6 +15,11 @@
 .left-block {
   display: flex;
   align-items: center;
+  position: relative;
+}
+.task-content {
+  display: flex;
+  align-items: center;
 }
 ul {
   padding: 0;
@@ -53,6 +58,7 @@ button {
   padding: 0.2rem 0.5rem;
   border-radius: 0;
   box-shadow: 0 0 0 0;
+  background: none;
 }
 .more-menu {
   display: flex;

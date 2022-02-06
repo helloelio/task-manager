@@ -1,5 +1,5 @@
 import './Main.css';
-import TaskItem from './tasks/taskItem';
+import TaskItem from './tasks/TaskItem';
 import Breadcrumbs from './breadcrumbs/BreadCrumbs';
 import Background from './assets/pocket-bg.jpg';
 
