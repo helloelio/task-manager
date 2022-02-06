@@ -1,8 +1,10 @@
 import '../Main.css';
 import { useState } from 'react';
+import DragIcon from './UI/DragIcon';
 
 const TaskItem = (props) => {
   const [moreMenu, setMoreMenu] = useState(false);
+  const [interactiveMenu, setInteractiveMenu] = useState(false);
 
   const handlerMoreMenu = () => {
     setMoreMenu(!moreMenu);
@@ -18,6 +20,10 @@ const TaskItem = (props) => {
     backgroundColor: moreMenu ? 'rgba(255, 255, 255, 0.3)' : '',
   };
 
+  const hoveredTaskMenu = {
+    backgroundColor: interactiveMenu ? 'rgba(255, 255, 255, 0.1)' : '',
+  };
+
   const activeMoreMenu = {
     background: moreMenu ? 'white' : '',
     color: moreMenu ? 'red' : '',
@@ -26,13 +32,17 @@ const TaskItem = (props) => {
   return (
     <li
       className='task-item'
+      style={activeTaskItem}
       key={props.id}
       draggable={true}
-      // onBlur={(e) => handlerBlurEnd(e)}
+      onMouseEnter={() => setInteractiveMenu(true)}
+      onMouseLeave={() => setInteractiveMenu(false)}
     >
-      <div className='left-block' style={activeTaskItem}>
-        <input type='checkbox' />
-        <span>{props.task}</span>
+      <div className='left-block' style={hoveredTaskMenu}>
+        <span className='task-content'>
+          <DragIcon active={interactiveMenu} />
+          {props.task}
+        </span>
       </div>
       <button
         className='btn btn-more'
@@ -42,8 +52,8 @@ const TaskItem = (props) => {
       >
         ···
       </button>
-      <div className='relative'>
-        {moreMenu ? (
+      {moreMenu ? (
+        <div className='relative'>
           <div className='more-menu'>
             <span
               className='more-menu__controls'
@@ -60,10 +70,10 @@ const TaskItem = (props) => {
               edit
             </span>
           </div>
-        ) : (
-          ''
-        )}
-      </div>
+        </div>
+      ) : (
+        ''
+      )}
     </li>
   );
 };
