@@ -70,9 +70,9 @@ function App() {
     setLogin(login);
     localStorage.setItem('login', login);
 
-    if (isEmptyRoutes) {
+    if (isEmptyRoutes()) {
       setRouter(items);
-      // handlerSetToLocalStorage(login, items);
+      handlerSetToLocalStorage(login, items);
       setRouter(JSON.parse(localStorage.getItem(`${login}`)));
       console.log('a');
     } else {
@@ -89,10 +89,10 @@ function App() {
   const isEmptyRoutes = () => {
     if (JSON.parse(localStorage.getItem(`${login}`)) === null) {
       console.log('3');
-      return true;
+      return false;
     } else if (JSON.parse(localStorage.getItem(`${login}`)).length === 0) {
       console.log('4');
-      return true;
+      return false;
     }
   };
 
