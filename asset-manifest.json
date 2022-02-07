@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/tasks/myday/static/css/main.98d556a0.css",
-    "main.js": "/tasks/myday/static/js/main.65f7e01b.js",
-    "static/js/787.63e47474.chunk.js": "/tasks/myday/static/js/787.63e47474.chunk.js",
-    "static/media/pocket-bg.jpg": "/tasks/myday/static/media/pocket-bg.da4910b84b947e95954f.jpg",
-    "static/media/logout.svg": "/tasks/myday/static/media/logout.f4a676834a99a9b88b4492e201a5d529.svg",
-    "index.html": "/tasks/myday/index.html",
-    "main.98d556a0.css.map": "/tasks/myday/static/css/main.98d556a0.css.map",
-    "main.65f7e01b.js.map": "/tasks/myday/static/js/main.65f7e01b.js.map",
-    "787.63e47474.chunk.js.map": "/tasks/myday/static/js/787.63e47474.chunk.js.map"
+    "main.css": "/task-manager/myday/static/css/main.98d556a0.css",
+    "main.js": "/task-manager/myday/static/js/main.a24e3903.js",
+    "static/js/787.63e47474.chunk.js": "/task-manager/myday/static/js/787.63e47474.chunk.js",
+    "static/media/pocket-bg.jpg": "/task-manager/myday/static/media/pocket-bg.da4910b84b947e95954f.jpg",
+    "static/media/logout.svg": "/task-manager/myday/static/media/logout.f4a676834a99a9b88b4492e201a5d529.svg",
+    "index.html": "/task-manager/myday/index.html",
+    "main.98d556a0.css.map": "/task-manager/myday/static/css/main.98d556a0.css.map",
+    "main.a24e3903.js.map": "/task-manager/myday/static/js/main.a24e3903.js.map",
+    "787.63e47474.chunk.js.map": "/task-manager/myday/static/js/787.63e47474.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.98d556a0.css",
-    "static/js/main.65f7e01b.js"
+    "static/js/main.a24e3903.js"
   ]
 }
