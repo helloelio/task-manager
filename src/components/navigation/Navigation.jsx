@@ -8,7 +8,10 @@ function Navigation(props) {
   return (
     <nav className='navigation'>
       <header className='header'>
-        <Profile />
+        <Profile
+          loginName={props.loginName}
+          handlerLogout={props.handlerLogout}
+        />
         <Search />
       </header>
       <section className='pockets-list'>

@@ -1,20 +1,24 @@
 import './Profile.css';
-import { useState } from 'react';
+import LogoutIcon from './assets/logout.svg';
 
-function Profile() {
-  const [name, setName] = useState('helloelio');
+function Profile(props) {
   return (
     <div className='profile'>
       <div className='profile-content'>
         <div className='profile__image'>
-          <span className='avatar'>{name[0].toUpperCase()}</span>
+          <span className='avatar'>{props.loginName[0].toUpperCase()}</span>
         </div>
         <div className='profile__description'>
-          <h3 className='profile__name'>{name}</h3>
+          <h3 className='profile__name'>{props.loginName}</h3>
         </div>
       </div>
       <div className='profile__contorls'>
-        <button className='btn btn-profile'> {'<'} </button>
+        <button
+          className='btn btn-profile'
+          onClick={() => props.handlerLogout()}
+        >
+          <img src={LogoutIcon} alt='' />
+        </button>
       </div>
     </div>
   );

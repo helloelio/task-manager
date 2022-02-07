@@ -5,40 +5,26 @@ import Main from './components/main/Main';
 import Modal from './components/modal/Modal';
 import NotFound from './components/404/NotFound';
 import { useState, useEffect } from 'react';
+import LoginPage from './components/login/LoginPage';
 
 let items = [
   {
     id: 1,
     path: 'tasks/myday',
     name: 'My day',
-    tasks: [
-      { id: 1, task: 'buy milk 1' },
-      { id: 2, task: 'buy milk 2' },
-      { id: 3, task: 'buy milk 3' },
-      { id: 4, task: 'buy milk 4' },
-    ],
+    tasks: [],
   },
   {
     id: 2,
     path: 'tasks/important',
     name: 'Important',
-    tasks: [
-      { id: 1, task: 'buy q' },
-      { id: 2, task: 'buy w' },
-      { id: 3, task: 'buy e' },
-      { id: 4, task: 'buy r' },
-    ],
+    tasks: [],
   },
   {
     id: 3,
     path: 'tasks/planned',
     name: 'Planned',
-    tasks: [
-      { id: 1, task: 'buy a' },
-      { id: 2, task: 'buy b' },
-      { id: 3, task: 'buy c' },
-      { id: 4, task: 'buy d' },
-    ],
+    tasks: [],
   },
   { id: 4, name: 'All', path: 'tasks/all', tasks: [] },
   { id: 5, name: 'Completed', path: 'tasks/completed', tasks: [] },
@@ -46,27 +32,69 @@ let items = [
 ];
 
 function App() {
+  const [login, setLogin] = useState('');
   const [routes, setRouter] = useState([]);
   const [modalType, setModalType] = useState('');
   const [pocketName, setPocketName] = useState('My day');
   const [modalState, setModalStatus] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-  const [itemToDelete, setItemTodelete] = useState(99999);
+  const [itemToDelete, setItemTodelete] = useState(null);
+
+  // for (const key in localStorage) {
+  //   console.log(`${key}: ${login}`);
+  // }
 
   useEffect(() => {
     // get data
-    setRouter(items);
-  }, [items]);
+    if (isEmptyRoutes) {
+      // setRouter(items);
+      // handlerSetToLocalStorage(items);
+    } else {
+      setRouter(JSON.parse(localStorage.getItem(`${login}`)));
+      setLogin(localStorage.getItem('login'));
+    }
+  }, [login]);
 
-  useEffect(() => {
-    items.map((route) => {
-      if (route.name === pocketName) {
-        const tasks = route.tasks.filter((t) => t.id !== itemToDelete);
-        route.tasks = tasks;
-      }
-    });
-    setRouter([...items]);
-  }, [itemToDelete]);
+  // useEffect(() => {
+  //   items.map((route) => {
+  //     if (route.name === pocketName) {
+  //       const tasks = route.tasks.filter((t) => t.id !== itemToDelete);
+  //       route.tasks = tasks;
+  //     }
+  //   });
+  //   localStorage.setItem('name', JSON.stringify([...items]));
+  // }, [itemToDelete]);
+
+  const handlerLogin = (value) => {
+    const login = value;
+    setLogin(login);
+    localStorage.setItem('login', login);
+
+    if (isEmptyRoutes) {
+      setRouter(items);
+      // handlerSetToLocalStorage(login, items);
+      setRouter(JSON.parse(localStorage.getItem(`${login}`)));
+      console.log('a');
+    } else {
+      setRouter(JSON.parse(localStorage.getItem(`${login}`)));
+      setLogin(localStorage.getItem('login'));
+      console.log('b');
+    }
+  };
+
+  const handlerLogout = () => {
+    setLogin('');
+  };
+
+  const isEmptyRoutes = () => {
+    if (JSON.parse(localStorage.getItem(`${login}`)) === null) {
+      console.log('3');
+      return true;
+    } else if (JSON.parse(localStorage.getItem(`${login}`)).length === 0) {
+      console.log('4');
+      return true;
+    }
+  };
 
   const modalOpen = (type) => {
     setErrorMessage(false);
@@ -80,7 +108,8 @@ function App() {
   };
 
   const handleSetRouter = (newPocket) => {
-    items = [...items, newPocket];
+    setRouter([...routes, newPocket]);
+    handlerSetToLocalStorage(login, routes);
   };
 
   const handlerSetPocketName = (newPocketName) => {
@@ -96,6 +125,10 @@ function App() {
       top: 0,
       behavior: 'smooth',
     });
+  };
+
+  const handlerSetToLocalStorage = (name, value) => {
+    localStorage.setItem(name, JSON.stringify(value));
   };
 
   const handlerNewItem = (item) => {
@@ -121,6 +154,7 @@ function App() {
               });
             }
           });
+          handlerSetToLocalStorage(login, routes);
           handlerModalStatus(false);
           break;
         }
@@ -131,40 +165,47 @@ function App() {
       setErrorMessage(true);
     }
   };
+
   return (
     <div className='App' id='app'>
-      <BrowserRouter>
-        <Navigation
-          handleSetRouter={handleSetRouter}
-          modalOpen={modalOpen}
-          pockets={routes}
-          handlerSetPocketName={handlerSetPocketName}
-        />
-        <Routes>
-          {routes.map((route) => {
-            return (
-              <Route
-                path={route.path}
-                key={route.id}
-                element={
-                  <Main
-                    tasks={route.tasks}
-                    title={route.name}
-                    modalOpen={modalOpen}
-                    scrollToTop={handlerScrollToTop}
-                    handlerDeleteTask={handlerDeleteTask}
-                  />
-                }
-              />
-            );
-          })}
-          <Route
-            path='/tasks/*'
-            element={<NotFound title='This pocket is NOT FOUND' />}
+      {login.length === 0 ? (
+        <LoginPage handlerLogin={handlerLogin} />
+      ) : (
+        <BrowserRouter>
+          <Navigation
+            loginName={login}
+            handlerLogout={handlerLogout}
+            handleSetRouter={handleSetRouter}
+            modalOpen={modalOpen}
+            pockets={routes}
+            handlerSetPocketName={handlerSetPocketName}
           />
-          <Route path='*' element={<Navigate to='/tasks/myday' />} />
-        </Routes>
-      </BrowserRouter>
+          <Routes>
+            {routes.map((route) => {
+              return (
+                <Route
+                  path={route.path}
+                  key={route.id}
+                  element={
+                    <Main
+                      tasks={route.tasks}
+                      title={route.name}
+                      modalOpen={modalOpen}
+                      scrollToTop={handlerScrollToTop}
+                      handlerDeleteTask={handlerDeleteTask}
+                    />
+                  }
+                />
+              );
+            })}
+            <Route
+              path='/tasks/*'
+              element={<NotFound title='This pocket is NOT FOUND' />}
+            />
+            <Route path='*' element={<Navigate to='/tasks/myday' />} />
+          </Routes>
+        </BrowserRouter>
+      )}
       {modalState && modalType === 'POCKET' ? (
         <Modal
           error={errorMessage}
