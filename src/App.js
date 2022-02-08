@@ -44,16 +44,19 @@ function App() {
   //   console.log(`${key}: ${login}`);
   // }
 
-  useEffect(() => {
-    // get data
-    if (isEmptyRoutes) {
-      // setRouter(items);
-      // handlerSetToLocalStorage(items);
-    } else {
-      setRouter(JSON.parse(localStorage.getItem(`${login}`)));
-      setLogin(localStorage.getItem('login'));
-    }
-  }, [login]);
+  // useEffect(() => {
+  //   // get data
+  //   if (isEmptyRoutes) {
+  //     // setRouter(items);
+  //     // handlerSetToLocalStorage(items);
+  //     console.log('d')
+  //   } else {
+  //     console.log('c')
+
+  //     setRouter(JSON.parse(localStorage.getItem(`${login}`)));
+  //     setLogin(localStorage.getItem('login'));
+  //   }
+  // }, [login]);
 
   // useEffect(() => {
   //   items.map((route) => {
@@ -65,35 +68,28 @@ function App() {
   //   localStorage.setItem('name', JSON.stringify([...items]));
   // }, [itemToDelete]);
 
-  const handlerLogin = (value) => {
-    const login = value;
-    setLogin(login);
-    localStorage.setItem('login', login);
+  // ПОФИКСИТЬ ГОВНА ЕБАННОГО
 
-    if (isEmptyRoutes()) {
+
+  const handlerLogin = (userLogin) => {
+    setLogin(userLogin);
+    localStorage.setItem('login', userLogin);
+
+    const isEmptyRoutes = JSON.parse(localStorage.getItem(userLogin)) === null ? true : 
+    JSON.parse(localStorage.getItem(userLogin)).length === 0 ? true : false;
+
+    if (isEmptyRoutes) {
       setRouter(items);
-      handlerSetToLocalStorage(login, items);
-      setRouter(JSON.parse(localStorage.getItem(`${login}`)));
-      console.log('a');
+      handlerSetToLocalStorage(userLogin, items);
     } else {
-      setRouter(JSON.parse(localStorage.getItem(`${login}`)));
+      setRouter(JSON.parse(localStorage.getItem(userLogin)));
       setLogin(localStorage.getItem('login'));
-      console.log('b');
     }
   };
+
 
   const handlerLogout = () => {
     setLogin('');
-  };
-
-  const isEmptyRoutes = () => {
-    if (JSON.parse(localStorage.getItem(`${login}`)) === null) {
-      console.log('3');
-      return false;
-    } else if (JSON.parse(localStorage.getItem(`${login}`)).length === 0) {
-      console.log('4');
-      return false;
-    }
   };
 
   const modalOpen = (type) => {
@@ -109,7 +105,7 @@ function App() {
 
   const handleSetRouter = (newPocket) => {
     setRouter([...routes, newPocket]);
-    handlerSetToLocalStorage(login, routes);
+    handlerSetToLocalStorage(login, [...routes, newPocket]);
   };
 
   const handlerSetPocketName = (newPocketName) => {
@@ -128,6 +124,7 @@ function App() {
   };
 
   const handlerSetToLocalStorage = (name, value) => {
+    console.log(value)
     localStorage.setItem(name, JSON.stringify(value));
   };
 
