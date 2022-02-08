@@ -18,7 +18,8 @@ export default function LoginPage(props) {
           id='login'
           onChange={(e) => setLogin(e.target.value)}
           onKeyPress={(e) => handlerKeyPresss(e)}
-          //   autoFocus={true}
+            autoFocus={true}
+            maxLength='12'
         />
         <label id='login-label' htmlFor='login'>
           Enter your username:
