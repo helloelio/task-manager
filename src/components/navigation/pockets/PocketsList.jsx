@@ -12,6 +12,7 @@ function PocketsList(props) {
             name={pocket.name}
             path={pocket.path}
             handlerSetPocketName={props.handlerSetPocketName}
+            handlerOpenNavMenu= {props.handlerOpenNavMenu}
           />
         );
       })}

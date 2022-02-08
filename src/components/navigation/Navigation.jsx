@@ -6,11 +6,12 @@ import CreateButton from '../../UI/CreateButton';
 
 function Navigation(props) {
   return (
-    <nav className='navigation'>
+    <nav className={props.navMenuStatus ? 'navigation navigation-mobile' : 'navigation'}>
       <header className='header'>
         <Profile
           loginName={props.loginName}
           handlerLogout={props.handlerLogout}
+          handlerOpenNavMenu={props.handlerOpenNavMenu}
         />
         <Search />
       </header>
@@ -18,6 +19,7 @@ function Navigation(props) {
         <PocketsList
           pockets={props.pockets}
           handlerSetPocketName={props.handlerSetPocketName}
+          handlerOpenNavMenu= {props.handlerOpenNavMenu}
         />
       </section>
       <footer>

@@ -4,6 +4,8 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   width: 210px;
+  transition: .4s ease-in-out;
+
 }
 .btn {
   align-items: center;
@@ -57,4 +59,10 @@
 .btn:active {
   box-shadow: #d6d6e7 0 3px 7px inset;
   transform: translateY(2px);
+}
+.navigation-mobile { 
+  left: 0 !important;
+  top: 0 ;
+  bottom: 0 ;
+  z-index: 1000;
 }

@@ -8,6 +8,7 @@ export default function PocketBackground(props) {
     left: '0',
     backgroundSize: '100%',
     backgroundAttachment: 'fixed',
+    backgroundRepeat: 'no-repeat',
   };
 
   return <div className='pocket-bg' style={bg}></div>;

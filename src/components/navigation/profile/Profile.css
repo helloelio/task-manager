@@ -35,7 +35,18 @@ p {
 .profile__description {
   margin-left: 10px;
 }
+.profile__controls { 
+  display:flex;
+  align-items: center;
+}
 .btn-profile {
   padding: 0.3rem 0.5rem;
   height: 35px;
+  margin-left: 5px;
+}
+
+@media (min-width: 650px) {
+  .btn-nav { 
+    display: none;
+  }
 }

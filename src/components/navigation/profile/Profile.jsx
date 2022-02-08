@@ -12,13 +12,17 @@ function Profile(props) {
           <h3 className='profile__name'>{props.loginName}</h3>
         </div>
       </div>
-      <div className='profile__contorls'>
+      <div className='profile__controls'>
         <button
           className='btn btn-profile'
           onClick={() => props.handlerLogout()}
         >
           <img src={LogoutIcon} alt='' />
         </button>
+        <button 
+      className='btn btn-profile btn-nav' 
+      onClick={()=> props.handlerOpenNavMenu()}
+      >{'<'}</button>
       </div>
     </div>
   );

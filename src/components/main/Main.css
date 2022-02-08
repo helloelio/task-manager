@@ -98,3 +98,23 @@ button {
     transform: translateX(-2px);
   }
 }
+
+
+@media (max-width:650px) {
+  #main {
+     padding: 8vh 1vh;
+     width: 100vw;
+    }
+    .breadcrumbs{
+      left: 0 !important;
+    }
+    .modal{
+      height: 200px;
+      width: 300px;
+    }
+    .navigation{
+      position: absolute;
+      left: -1000px;
+    }
+    
+}

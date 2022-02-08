@@ -8,7 +8,7 @@ import PocketImage from '../../UI/PocketImage';
 function Main(props) {
   return (
     <main className='main' id='main'>
-      <Breadcrumbs breadcrumbs={props.title} scrollToTop={props.scrollToTop} />
+      <Breadcrumbs breadcrumbs={props.title} scrollToTop={props.scrollToTop} handlerOpenNavMenu={props.handlerOpenNavMenu}/>
       <PocketImage image={Background} />
       <h2 className='main__title'>{props.title}</h2>
       <ul>

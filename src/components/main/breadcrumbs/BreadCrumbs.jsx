@@ -16,8 +16,11 @@ export default function Breadcrumbs(props) {
   };
 
   return (
-    <div style={style}>
-      {/* <span style={styleSymbol}>{symbols[randomSymbol]}</span> */}
+    <div className='breadcrumbs' style={style}>
+      <button 
+      className='btn btn-profile btn-nav' 
+      onClick={()=> props.handlerOpenNavMenu()}
+      >{'>'}</button>
       <span
         style={styleBreadcrumbs}
         onClick={props.scrollToTop}

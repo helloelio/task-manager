@@ -14,11 +14,15 @@ function PocketsItem(props) {
     setMoreMenu(false);
   };
 
+
   return (
     <NavLink
       to={props.path}
       className='pockets-item'
-      onClick={() => props.handlerSetPocketName(props.name)}
+      onClick={() => {
+        props.handlerSetPocketName(props.name);
+        props.handlerOpenNavMenu();
+        }}
       onBlur={handlerOnBlur}
       style={({ isActive }) => {
         return {

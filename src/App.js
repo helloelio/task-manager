@@ -36,7 +36,8 @@ function App() {
   const [routes, setRouter] = useState([]);
   const [modalType, setModalType] = useState('');
   const [pocketName, setPocketName] = useState('My day');
-  const [modalState, setModalStatus] = useState(false);
+  const [modalStatus, setModalStatus] = useState(false);
+  const [navMenuStatus, setNavMenuStatus] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const [itemToDelete, setItemTodelete] = useState(null);
 
@@ -98,6 +99,10 @@ function App() {
     setModalStatus(true);
   };
 
+  const handlerOpenNavMenu = () => { 
+    setNavMenuStatus(!navMenuStatus)
+  }
+
   const handlerModalStatus = (status) => {
     setModalStatus(status);
     setErrorMessage(false);
@@ -124,7 +129,6 @@ function App() {
   };
 
   const handlerSetToLocalStorage = (name, value) => {
-    console.log(value)
     localStorage.setItem(name, JSON.stringify(value));
   };
 
@@ -170,12 +174,14 @@ function App() {
       ) : (
         <BrowserRouter>
           <Navigation
+            navMenuStatus={navMenuStatus}
             loginName={login}
             handlerLogout={handlerLogout}
             handleSetRouter={handleSetRouter}
             modalOpen={modalOpen}
             pockets={routes}
             handlerSetPocketName={handlerSetPocketName}
+            handlerOpenNavMenu={handlerOpenNavMenu}
           />
           <Routes>
             {routes.map((route) => {
@@ -185,6 +191,7 @@ function App() {
                   key={route.id}
                   element={
                     <Main
+                    handlerOpenNavMenu={handlerOpenNavMenu}
                       tasks={route.tasks}
                       title={route.name}
                       modalOpen={modalOpen}
@@ -203,14 +210,14 @@ function App() {
           </Routes>
         </BrowserRouter>
       )}
-      {modalState && modalType === 'POCKET' ? (
+      {modalStatus && modalType === 'POCKET' ? (
         <Modal
           error={errorMessage}
           title='Pocket'
           handlerStatus={handlerModalStatus}
           handlerNewItem={handlerNewItem}
         />
-      ) : modalState && modalType === 'TASK' ? (
+      ) : modalStatus && modalType === 'TASK' ? (
         <Modal
           error={errorMessage}
           title='Task'
