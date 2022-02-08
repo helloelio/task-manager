@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/task-manager/static/css/main.98d556a0.css",
-    "main.js": "/task-manager/static/js/main.b2a64e6e.js",
+    "main.css": "/task-manager/static/css/main.664785ff.css",
+    "main.js": "/task-manager/static/js/main.d315107a.js",
     "static/js/787.63e47474.chunk.js": "/task-manager/static/js/787.63e47474.chunk.js",
     "static/media/pocket-bg.jpg": "/task-manager/static/media/pocket-bg.da4910b84b947e95954f.jpg",
     "static/media/logout.svg": "/task-manager/static/media/logout.f4a676834a99a9b88b4492e201a5d529.svg",
     "index.html": "/task-manager/index.html",
-    "main.98d556a0.css.map": "/task-manager/static/css/main.98d556a0.css.map",
-    "main.b2a64e6e.js.map": "/task-manager/static/js/main.b2a64e6e.js.map",
+    "main.664785ff.css.map": "/task-manager/static/css/main.664785ff.css.map",
+    "main.d315107a.js.map": "/task-manager/static/js/main.d315107a.js.map",
     "787.63e47474.chunk.js.map": "/task-manager/static/js/787.63e47474.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.98d556a0.css",
-    "static/js/main.b2a64e6e.js"
+    "static/css/main.664785ff.css",
+    "static/js/main.d315107a.js"
   ]
 }
